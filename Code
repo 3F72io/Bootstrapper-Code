@@ -13,7 +13,7 @@ namespace bootstrapper_1._0._1a
             WebClient wc = new WebClient();
             Console.Title = "Your Favorite Name here";
             Console.Write("Example text");
-            Console.ReadLine(); //The user needs to press enter to continue, with this the user can read the write.
+            Console.ReadLine(); //The user must press enter to continue, with this the user can read the writing.
 
         }
     }
