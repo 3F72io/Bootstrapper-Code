@@ -1,0 +1,39 @@
+You put this code in Form1_Load and next to private you put async
+
+
+            this.TopMost = true; //Optional
+            await Task.Delay(5000);
+            WebClient wc = new WebClient();//String the WebClient to wc
+            String program = "RainCloudPack";//The name of the zip file, you can change it if you want
+            String link = "https://pastebin.com/raw/21NTC01f";//Your raw link remember, the file you upload in the raw has to be packed as zip, not as rar
+            String download = wc.DownloadString(link);//Read the information of your link, I recommend that in your raw there is a discord file "See the example in the pastebin link, for example"
+            await Task.Delay(2000); //await task delay is to make it wait a certain time, remember that if the number, in this case 2000 contains three zeros, it is equal to 2 seconds this is optional
+            String path = @"RainCloud\" + program + ".zip";//(Optional) here you change the name of the folder that you want me to leave, only change the text, not the symbols
+            String patch = (@"RainCloud");//String the name of the folder "Put the name of the folder you created in path"
+            String patch1 = (@"RainCloud\KPV2");//String the name of the directory, change the "RainCloud by the name of the path that you added and the KVP2 by the name of the folder that is going to download in your link"
+            await Task.Delay(1000);
+            Directory.CreateDirectory(patch);//Create the directory
+            wc.DownloadFile(download, path);//Download current file
+            //I recommend putting several await task delays to avoid crashing problems
+            String EEEEpath = @"RainCloud\";//Here you copy and paste the name of your path that you created and paste it
+            try
+            {
+                Directory.CreateDirectory(patch1);
+                ZipFile.ExtractToDirectory(path, EEEEpath);//In ZipFile you will get an error, to solve it go to References and Add reference, now in the Assemblies section press Ctrl E and search for compression. Then in the two references that appear, you hold down ctrl to select the two and you give it to accept. Now go to usings and put using System.IO.Compression
+            }
+            catch
+            {
+
+            }
+            String program1 = "RainCloudPack";//Here you put you choose the name you want to put the zip file
+            String Epath = @"RainCloud\KPV2\KiraV2";//Change the KVP2 for the name of the folder that is downloaded, check your discord link and the KiraV2 for the executable file, in this case YOUR PROGRAM
+            try
+            {
+                Process.Start(Epath);
+            }
+            catch
+            {
+                Process.Start(patch1);
+            }
+
+            Application.Exit();
